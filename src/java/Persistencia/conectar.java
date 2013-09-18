@@ -48,7 +48,7 @@ ControladorJuego cont1= ControladorJuego.getInstance();
 DataFecha fe=new DataFecha();
 //TERMINA DARIO
 
-   public Connection conexion()
+   public Connection conectar()
     {
       try {
              
@@ -65,7 +65,7 @@ DataFecha fe=new DataFecha();
 public void addPerfil(String nic,String co,String no ,String ap,String fe,String img,String tipo,String url){
     String sql="INSERT INTO perfiles (Nick,Correo,Nombre,Apellido,FechaNacimiento,Imagen,Tipo,webURL) VALUES (?,?,?,?,?,?,?,?)";
         try {
-            Connection cn = this.conexion();
+            Connection cn = this.conectar();
             PreparedStatement pst= cn.prepareStatement(sql);
             pst.setString(1,nic);//asigno en el signo de interrogacion numero uno la variable nom
             pst.setString(2,co);
@@ -88,7 +88,7 @@ public void addPerfil(String nic,String co,String no ,String ap,String fe,String
 
 public   boolean existeNickCliente (String ni) throws SQLException {
         String sql = "SELECT * FROM perfiles WHERE perfiles.Nick = '"+ni+"' AND perfiles.Tipo='Cliente'";
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql); 
       
@@ -102,7 +102,7 @@ public   boolean existeNickCliente (String ni) throws SQLException {
       }
     public boolean existeCorreoCliente(String co)throws SQLException {
         String sql = "SELECT * FROM perfiles WHERE perfiles.Correo = '"+co+"' AND perfiles.Tipo='Cliente'";
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql); 
       
@@ -116,7 +116,7 @@ public   boolean existeNickCliente (String ni) throws SQLException {
 
 public   boolean existeNickDesarrollador(String ni) throws SQLException {
         String sql = "SELECT * FROM perfiles WHERE perfiles.Nick = '"+ni+"' AND perfiles.Tipo='Desarrollador'";
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql); 
       
@@ -130,7 +130,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
       }
     public boolean existeCorreoDesarrollador(String co) throws SQLException {
         String sql = "SELECT * FROM perfiles WHERE perfiles.Correo = '"+co+"' AND perfiles.Tipo='Desarrollador'";
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql); 
       
@@ -144,7 +144,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
 
  public   boolean existeNick (String ni) throws SQLException {
         String sql = "SELECT * FROM perfiles WHERE perfiles.Nick = '"+ni+"'";
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql); 
       
@@ -162,7 +162,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
     
 	public List ListaCategorias()
     {
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         Statement  st = null;
     try {
         st = cn.createStatement();
@@ -190,7 +190,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
     public void altaJuego(String Nom,int id,double tam ,String desc,Money prec,String ni){
     String sql="INSERT INTO juegos (Nombre,Id,Tamanio,Descripcion,Precio,Nick) VALUES (?,?,?,?,?,?)";
         try {
-            Connection cn = this.conexion();
+            Connection cn = this.conectar();
             PreparedStatement pst= cn.prepareStatement(sql);
             pst.setString(1,Nom);//asigno en el signo de interrogacion numero uno la variable nom
            pst.setInt(2,id);
@@ -213,7 +213,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
 	
     public void AgregarCategoriaAJuego(String nom, String nomCa) throws SQLException{
      String sql1 ="SELECT Id FROM juegos WHERE Nombre = '"+nom+"'" ;
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql1); 
         while(rs.next())
@@ -225,7 +225,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
                     
         String sql="INSERT INTO tiene (IdJuego, NombreCategoria) VALUES (?,?)";
         try {
-//            Connection cn = this.conexion();
+//            Connection cn = this.conectar();
 //             Statement  st = null;
              st = cn.createStatement();
                                   
@@ -249,7 +249,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
         
         LinkedList lDesarrollador= new LinkedList();
                 
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         String sql = "SELECT * FROM perfiles WHERE Tipo='Desarrollador'";
         Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql);
@@ -283,7 +283,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
     public List ListarDesarrolladores() throws SQLException
     {
          List Lista = new ArrayList();
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         Statement  st = cn.createStatement();
         String sql="select Nick from perfiles where Tipo = 'Desarrollador' ";
         ResultSet rs = st.executeQuery(sql);
@@ -303,7 +303,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
 //     public List ListaCategorias() throws SQLException
 //    {
 //         List Lista = new ArrayList();
-//        Connection cn = this.conexion();
+//        Connection cn = this.conectar();
 //        Statement  st = cn.createStatement();
 //        String sql="select Nombre from categorias";
 //        ResultSet rs = st.executeQuery(sql);
@@ -324,7 +324,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
  
 //    public List ListaCategorias()
 //    {
-//        Connection cn = this.conexion();
+//        Connection cn = this.conectar();
 //        Statement  st = null;
 //    try {
 //        st = cn.createStatement();
@@ -351,7 +351,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
 //    public void altaJuego(String Nom,int id,double tam ,String desc,Money prec,String ni){
 //    String sql="INSERT INTO juegos (Nombre,Id,Tamanio,Descripcion,Precio,Nick) VALUES (?,?,?,?,?,?)";
 //        try {
-//            Connection cn = this.conexion();
+//            Connection cn = this.conectar();
 //            PreparedStatement pst= cn.prepareStatement(sql);
 //            pst.setString(1,Nom);//asigno en el signo de interrogacion numero uno la variable nom
 //           pst.setInt(2,id);
@@ -374,7 +374,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
         
     public int idJuego(String Nombre) throws SQLException{
         String sql1 ="SELECT Id FROM juegos WHERE Nombre = '"+Nombre+"'" ;
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql1); 
         int ide=0;
@@ -392,7 +392,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
 //    /*******************************DARIO****************************************************/
     public ArrayList GetDes(){
      
-   Connection cn = this.conexion();
+   Connection cn = this.conectar();
         Statement  st = null;
         String ni;
         String co ;
@@ -454,7 +454,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
  }
  public ArrayList GetCliente(){
      
-   Connection cn = this.conexion();
+   Connection cn = this.conectar();
         Statement  st = null;
         String ni;
         String co ;
@@ -517,7 +517,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
  
   public List ListaCategoria()
     {
-      Connection cn = this.conexion();
+      Connection cn = this.conectar();
         Statement  st = null;
         String nom;
     try {
@@ -552,7 +552,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
       
      public List ListaJuegosCat(String cate)
     {
-      Connection cn = this.conexion();
+      Connection cn = this.conectar();
         Statement  st = null;
         String nom;
     try {
@@ -633,7 +633,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
     }
      
     public Juego GetJuegoCompleto(String n){
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         Statement  st = null;
         
     try {
@@ -711,7 +711,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
     public List getCategoriasConJuego(String ju){
         
     
-      Connection cn = this.conexion();
+      Connection cn = this.conectar();
         Statement  st = null;
         
     try {
@@ -759,7 +759,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
         
      
     public List ObtenerLasCompras(int idju){
-       Connection cn = this.conexion();
+       Connection cn = this.conectar();
        ArrayList lista = new ArrayList();
         Statement  st = null;
         
@@ -814,7 +814,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
     }
     
      public List ObtenerComentariosDeUnJuego(int idju){  
-      Connection cn = this.conexion();
+      Connection cn = this.conectar();
         Statement  st = null;
         
     try {
@@ -866,7 +866,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
     }
      
       public List RespuestaComentarios(int idCom){  
-      Connection cn = this.conexion();
+      Connection cn = this.conectar();
         Statement  st = null;
         
     try {
@@ -916,7 +916,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
     public void altaCategoria(String nombre){
     String sql="INSERT INTO categorias (Nombre) VALUES (?)";
            try {
-                Connection cn = this.conexion();
+                Connection cn = this.conectar();
             PreparedStatement pst= cn.prepareStatement(sql);
             pst.setString(1,nombre);//asigno en el signo de interrogacion numero uno la variable nom
             
@@ -933,7 +933,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
 }
     public   boolean existeCategoria (String ca) throws SQLException{
         String sql = "SELECT * FROM categorias WHERE Nombre = '"+ca+"'";
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql);
       
@@ -950,7 +950,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
 //         try {
 //           
 //           
-//            Connection cn = cc.conexion();
+//            Connection cn = cc.conectar();
 //            String sql = "SELECT Nick FROM perfiles";
 //            Statement  st = cn.createStatement();
 //            ResultSet rs = st.executeQuery(sql);
@@ -994,7 +994,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
         
               
         
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         String sql = "SELECT * FROM juegos";
         Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql);
@@ -1014,7 +1014,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
             ju.setDesarrollador(des);
             //obtengo la lista de categorias
             
-            Connection co = this.conexion();
+            Connection co = this.conectar();
             String sq = "SELECT NombreCategoria FROM tiene WHERE IdJuego='"+id+"'";
             Statement  sta = co.createStatement();
             ResultSet res = sta.executeQuery(sql);
@@ -1048,7 +1048,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
         
         ArrayList lClientes= new ArrayList();
                 
-        Connection cn = this.conexion();
+        Connection cn = this.conectar();
         String sql = "SELECT * FROM perfiles WHERE Tipo='Cliente'";
         Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql);
@@ -1078,7 +1078,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
     public void addCompra(Compra c){
     try {
         String sql="INSERT INTO compra (Nick, IdJuego, Fecha) VALUES (?,?,?)";
-        Connection cn=this.conexion();
+        Connection cn=this.conectar();
         PreparedStatement pst= cn.prepareStatement(sql);
         pst.setString(1,c.getNickCliente());
         pst.setInt(2, c.getIdJuego());
@@ -1106,7 +1106,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
          DefaultComboBoxModel modelo= new DefaultComboBoxModel();
       String sql="SELECT Nick FROM perfiles WHERE Tipo='Cliente' AND Nick LIKE '"+cadenaEscrita+"%';";
       
-      Connection cn = this.conexion();
+      Connection cn = this.conectar();
        Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql); 
         
@@ -1122,7 +1122,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
          DefaultComboBoxModel modelo= new DefaultComboBoxModel();
       String sql="SELECT Nick FROM perfiles WHERE Nick LIKE '"+cadenaEscrita+"%';";
       
-      Connection cn = this.conexion();
+      Connection cn = this.conectar();
        Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql); 
         
@@ -1136,7 +1136,7 @@ public   boolean existeNickDesarrollador(String ni) throws SQLException {
          DefaultComboBoxModel modelo= new DefaultComboBoxModel();
       String sql="SELECT Nick FROM perfiles WHERE Tipo='Desarrollador' AND Nick LIKE '"+cadenaEscrita+"%';";
       
-      Connection cn = this.conexion();
+      Connection cn = this.conectar();
        Statement  st = cn.createStatement();
         ResultSet rs = st.executeQuery(sql); 
         

@@ -49,7 +49,7 @@ ControladorPerfil control2= ControladorPerfil.getInstance();
 //        String sql = "SELECT * FROM perfiles";
 //        model = new DefaultTableModel (null, titulos);
 //        
-//        Connection cn = cc.conexion();
+//        Connection cn = cc.conectar();
 //                
 //        try {
 //          Statement  st = cn.createStatement();

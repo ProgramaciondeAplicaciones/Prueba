@@ -68,7 +68,7 @@ List listaa = new ArrayList();
   
     /******** TERMINA LAURAA **********************/
     conectar cc= new conectar();
-          Connection cn = cc.conexion();
+          Connection cn = cc.conectar();
           ControladorJuego cont= ControladorJuego.getInstance();
     /**
      * This method is called from within the constructor to initialize the form.

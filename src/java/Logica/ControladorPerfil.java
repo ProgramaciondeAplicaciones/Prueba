@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
     Desarrollador DesSelec; 
     private ArrayList Clientes;
    conectar cc= new conectar();
-    Connection cn = cc.conexion();
+    Connection cn = cc.conectar();
     public String tipo=null;
     
     private String nickAux,correoAux,imagenAux;

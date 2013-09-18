@@ -33,7 +33,7 @@ public class ControladorJuego {
     private List Categorias;
     private List listaCat;
     conectar cc= new conectar();
-    Connection cn = cc.conexion();
+    Connection cn = cc.conectar();
     public List categoriasparaeljuego;
      Categoria catSelec ;
       Juego jug;

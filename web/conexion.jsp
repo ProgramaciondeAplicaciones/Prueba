@@ -11,10 +11,10 @@ try{
 Class.forName("com.mysql.jdbc.Driver");
 conex=(Connection)DriverManager.getConnection("jdbc:mysql://localhost/progaplimarket","root","");
 sql=conex.createStatement();
-out.print("Conexion correcta");
+out.print("conectar correcta");
         
 
 }catch(Exception e){
-out.print("ERROR EN LA CONEXION" + e);
+out.print("ERROR EN LA conectar" + e);
         }
 %>

@@ -52,7 +52,7 @@ public class Busqueda {
 //    try {
 //        
 //        String sql="SELECT * FROM perfiles WHERE Nick='"+nombre+"'";
-//        Connection cn=cc.conexion();
+//        Connection cn=cc.conectar();
 //        Statement  st = cn.createStatement();
 //        ResultSet rs = st.executeQuery(sql);
 //        while (rs.next()){

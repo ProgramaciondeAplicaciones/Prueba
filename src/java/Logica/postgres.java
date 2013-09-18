@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
  * @author Nicole
  */
 public class postgres {
-    //DATOS PARA LA CONEXION
+    //DATOS PARA LA conectar
    private String bd = "dbDemoImagen";
    private String user = "postgres";
    private String password = "";
@@ -59,7 +59,7 @@ public class postgres {
         FileInputStream fis = null;
         try {
             conectar cc=new conectar();
-            Connection cn = cc.conexion();
+            Connection cn = cc.conectar();
             
              JOptionPane.showMessageDialog(null,ruta);
             File file = new File(ruta);
